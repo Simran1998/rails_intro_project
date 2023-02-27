@@ -27,3 +27,24 @@ data.each do |s|
   )
 end
 puts "Created #{School.count} schools"
+
+
+filename_students = Rails.root.join("db/students.csv")
+puts "Loading products from the csv file: #{filename_students}"
+
+csv_data_students = File.read(filename_students)
+students = CSV.parse(csv_data_students, headers: true, encoding: "iso-8859-1")
+
+products.each do |p|
+  category = Category.find_or_create_by(name: p["category"])
+  if category && category.valid?
+    product = category.products.create(
+      title:          p["name"],
+      price:          p["price"],
+      description:    p["description"],
+      stock_quantity: p["stock quantity"]
+    )
+    puts "Invalid product #{p['name']}" unless product&.valid?
+  else
+    puts "invalid category #{p['category']} for product #{p['name']}."
+  end
