@@ -1,2 +1,20 @@
-<h1>AboutUs#index</h1>
-<p>Find me in app/views/about_us/index.html.erb</p>
+<div class="container">
+<h1 class="mb-4 is-size-1">About the Project</h1>
+<p  style= 'width:60rem' >This project is based on the private schools in Winnipeg. It contains small chunck of fake data about the students and teachers at these
+schools. Major share of dataset has been collected from kaggle. The infromation about schools has been colleted from
+<%= link_to "TopPrivateSchools.ca","https://topprivateschools.ca/schoolsbycity.asp?city=Winnipeg&province=Manitoba" %>. All data has been impoted in the project
+via .csv files. The project has 4 models:
+</p>
+<ol class="mb-6 ml-4">
+<li>School - id,gender,grades,address</li>
+<li>Student- id,firstname,lastname,gender,email,school_id</li>
+<li>Teacher- id,firstname,lastname,email,school_id</li>
+<li>Teacher_Student- school_id,teacher_id</li>
+</ol>
+<figure class="image mb-6" >
+
+  <%= image_tag 'intro.jpg',
+ style: 'height: 20rem; width:40rem'
+  %>
+</figure>
+</div>
