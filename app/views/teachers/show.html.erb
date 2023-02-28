@@ -1,2 +1,31 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
+<div class="container">
+  <div class="tile is-parent">
+      <article class="tile is-child notification is-info">
+        <p class="title"><%= @teacher.firstname %> <%= @teacher.lastname %></p>
+        <p >Works at <%= link_to @teacher.school.name, @teacher.school %> School</p>
+        <p >Email at: <%= @teacher.email %></p>
+
+      </article>
+  </div>
+
+  <div class="tile is-parent m-2">
+    <article class="tile is-child notification is-success m-5">
+      <div class="content">
+        <p class="title">List of Students</p>
+        <ul>
+        <% @teacher.student_teachers.each do |st| %>
+          <% student = Student.find(st.student_id) %>
+        <li>
+        <%= link_to "#{student.firstname} #{student.lastname}", student %>
+
+        </li>
+
+        <%end%>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+
+
+</div>

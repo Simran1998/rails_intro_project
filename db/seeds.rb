@@ -41,7 +41,7 @@ students.each do |s|
   if school && school.valid?
     student = school.students.create(
       firstname: s["firstname"],
-      lastname:  s["firstname"],
+      lastname:  s["lastname"],
       grade:     s["grade"],
       gender:    s["gender"],
       email:     s["email"]

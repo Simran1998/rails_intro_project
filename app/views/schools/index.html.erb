@@ -5,9 +5,6 @@
     <tr>
       <th>Id</th>
       <th>School</th>
-      <th>Gender</th>
-      <th>Grades</th>
-      <th>Address</th>
       <th>Total Students</th>
       <th>Total Teachers</th>
     </tr>
@@ -17,9 +14,6 @@
     <tr>
     <td><%= school.id %></td>
       <td><%= link_to school.name, school %></td>
-      <td><%= school.gender %></td>
-      <td><%= school.grades %></td>
-      <td><%= school.address %></td>
       <td><%= link_to school.students.count, school %></td>
       <td><%= link_to school.teachers.count, school %></td>
     </tr>

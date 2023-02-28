@@ -1,2 +1,51 @@
-<h1>Schools#show</h1>
-<p>Find me in app/views/schools/show.html.erb</p>
+<div class="container">
+
+<h2 class="is-size-2"><%= @school.name %></h2>
+<div class="tile is-parent">
+      <article class="tile is-child notification is-info">
+        <p class="title"><%= @school.gender %> School</p>
+        <p >Classes available for: <%= @school.grades %></p>
+        <p>Our address: <%= @school.address %></p>
+
+      </article>
+  </div>
+
+
+<div class="tile is-ancestor" style="width: 70%; margin:auto">
+  <div class="tile is-parent m-2">
+    <article class="tile is-child notification is-success m-5">
+      <div class="content">
+        <p class="title">List of Students</p>
+        <ul>
+        <% @school.students.each do |student| %>
+        <li>
+        <%= link_to student.firstname, student %>
+        </li>
+        <%end%>
+        </ul>
+      </div>
+    </article>
+</div>
+
+<div class="tile is-parent m-2">
+    <article class="tile is-child notification is-success m-5">
+      <div class="content">
+        <p class="title">List of Teachers</p>
+        <ul>
+        <% @school.teachers.each do |teacher| %>
+        <li>
+        <%= link_to teacher.firstname, teacher %>
+        </li>
+        <%end%>
+        </ul>
+      </div>
+    </article>
+</div>
+
+
+  </div>
+
+
+
+  </div>
+

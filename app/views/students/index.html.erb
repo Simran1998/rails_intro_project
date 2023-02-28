@@ -1,2 +1,23 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<div class="container">
+<h1 class="is-size-1 mb-6">List of students going to private schools in Winnipeg</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @students.each do |student| %>
+    <tr>
+    <td><%= student.id %></td>
+      <td><%= link_to student.firstname, student %></td>
+      <td><%= student.lastname %></td>
+      <td><%= link_to student.school.name, student.school %></td>
+    </tr>
+<%end%>
+  </tbody>
+</table>
+</div>
