@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  paginates_per 10
   belongs_to :school
   has_many :student_teachers
   has_many :teachers
