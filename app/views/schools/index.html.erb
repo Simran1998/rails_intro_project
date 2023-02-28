@@ -1,9 +1,29 @@
-<center><h1>List of Private schools in Winnipeg</h1></center>
-<ol class="ml-6 has-text-success">
+<div class="container">
+<h1 class="is-size-1 mb-4">List of Private schools in Winnipeg</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>School</th>
+      <th>Gender</th>
+      <th>Grades</th>
+      <th>Address</th>
+      <th>Total Students</th>
+      <th>Total Teachers</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @schools.each do |school| %>
-  <li>
-    <%= link_to school.name, school %>
-    <em>(<%= school.students.count %> students)</em>
-  </li>
-  <% end %>
-</ol>
+    <tr>
+    <td><%= school.id %></td>
+      <td><%= link_to school.name, school %></td>
+      <td><%= school.gender %></td>
+      <td><%= school.grades %></td>
+      <td><%= school.address %></td>
+      <td><%= link_to school.students.count, school %></td>
+      <td><%= link_to school.teachers.count, school %></td>
+    </tr>
+<%end%>
+  </tbody>
+</table>
+</div>

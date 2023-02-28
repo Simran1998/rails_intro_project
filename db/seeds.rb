@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "csv"
 
+StudentTeacher.destroy_all
 Teacher.destroy_all
 Student.destroy_all
 School.delete_all
-StudentTeacher.destroy_all
 
 filename = Rails.root.join("db/schools.csv")
 puts "Loading products from the csv file: #{filename}"
