@@ -1,2 +1,9 @@
-<h1>Schools#index</h1>
-<p>Find me in app/views/schools/index.html.erb</p>
+<center><h1>List of Private schools in Winnipeg</h1></center>
+<ol class="ml-6 has-text-success">
+  <% @schools.each do |school| %>
+  <li>
+    <%= link_to school.name, school %>
+    <em>(<%= school.students.count %> students)</em>
+  </li>
+  <% end %>
+</ol>
