@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'about_us/index'
   root "home#index"
   resources :schools
   resources :students
