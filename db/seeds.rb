@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "csv"
 
-School.delete_all
-StudentTeacher.destroy_all
 Teacher.destroy_all
 Student.destroy_all
+School.delete_all
+StudentTeacher.destroy_all
 
 filename = Rails.root.join("db/schools.csv")
 puts "Loading products from the csv file: #{filename}"
@@ -28,6 +28,7 @@ data.each do |s|
 end
 puts "Created #{School.count} schools"
 
+# #######################################################################################################################################3
 
 filename_students = Rails.root.join("db/students.csv")
 puts "Loading products from the csv file: #{filename_students}"
@@ -35,16 +36,57 @@ puts "Loading products from the csv file: #{filename_students}"
 csv_data_students = File.read(filename_students)
 students = CSV.parse(csv_data_students, headers: true, encoding: "iso-8859-1")
 
-products.each do |p|
-  category = Category.find_or_create_by(name: p["category"])
-  if category && category.valid?
-    product = category.products.create(
-      title:          p["name"],
-      price:          p["price"],
-      description:    p["description"],
-      stock_quantity: p["stock quantity"]
+students.each do |s|
+  school = School.find_by(id: s["school"])
+  if school && school.valid?
+    student = school.students.create(
+      firstname: s["firstname"],
+      lastname:  s["firstname"],
+      grade:     s["grade"],
+      gender:    s["gender"],
+      email:     s["email"]
     )
-    puts "Invalid product #{p['name']}" unless product&.valid?
+    puts "Invalid students #{s['firstname']}" unless student&.valid?
   else
-    puts "invalid category #{p['category']} for product #{p['name']}."
+    puts "invalid school #{s['school_id']} for student #{s['firstname']}."
   end
+end
+puts "Created #{Student.count} students"
+
+########################################################################################################################################
+
+filename_teachers = Rails.root.join("db/teachers.csv")
+puts "Loading products from the csv file: #{filename_teachers}"
+
+csv_data_teachers = File.read(filename_teachers)
+teachers = CSV.parse(csv_data_teachers, headers: true, encoding: "iso-8859-1")
+
+teachers.each do |s|
+  school = School.find_by(id: s["school_id"])
+  if school && school.valid?
+    teacher = school.teachers.create(
+      firstname: s["firstname"],
+      lastname:  s["lastname"],
+      email:     s["email"]
+    )
+    puts "Invalid teachers #{s['firstname']}" unless teacher&.valid?
+  else
+    puts "invalid school #{s['school_id']} for teacher #{s['firstname']}."
+  end
+end
+puts "Created #{Teacher.count} teachers"
+
+###############################################################################################################################
+file = Rails.root.join("db/student_teachers.csv")
+puts "Loading products from the csv file: #{file}"
+
+csv_data_st = File.read(file)
+student_teachers = CSV.parse(csv_data_st, headers: true, encoding: "iso-8859-1")
+
+student_teachers.each do |s|
+  StudentTeacher.create(
+    student_id: s["student_id"],
+    teacher_id: s["teacher_id"]
+  )
+end
+puts "Created #{StudentTeacher.count} student_teacher records"
