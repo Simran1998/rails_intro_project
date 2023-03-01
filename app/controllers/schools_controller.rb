@@ -6,4 +6,9 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find(params[:id])
   end
+
+  def search
+    wildcard_search = "%#{params[:keywords]}%"
+    @schools = School.where("name LIKE ?", wildcard_search)
+  end
 end
