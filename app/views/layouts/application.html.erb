@@ -14,19 +14,8 @@
   <body>
      <section class= "container">
 <%= render partial:'shared/header'%>
-<div style= "width: 30%">
-<%= form_with(url: search_schools_path, method: :get, local: true) do%>
-<div>
-    <nav class="navbar filed is-grouped mb-5">
-    <%= text_field_tag(:keywords,nil,class: "input", placeholder: "Search for schools")%>
-     <%= submit_tag("search", class: "button is-dark")%>
-    </nav>
 
-    <%end%>
-    </div>
-</div>
     <%= yield %>
-
     </section>
 
   </body>

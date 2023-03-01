@@ -19,8 +19,23 @@
 
        <div class="navbar-item"><%= link_to 'Teachers', teachers_path %></div>
 
+
+      <div>
+        <%= form_with(url: search_schools_path, method: :get, local: true) do%>
+        <div>
+          <nav class="navbar filed is-grouped mt-3">
+            <%= text_field_tag(:keywords,nil,class: "input", placeholder: "Search for schools")%>
+            <%= submit_tag("search", class: "button is-dark")%>
+          </nav>
+        </div>
+        <%end%>
       </div>
-    </div>
+
+
+
+
+      </div>
+
 
 
   </div>
