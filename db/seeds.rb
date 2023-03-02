@@ -20,10 +20,12 @@ data = CSV.parse(csv_data, headers: true, encoding: "iso-8859-1")
 
 data.each do |s|
   School.create(
-    name:    s["name"],
-    grades:  s["grades"],
-    gender:  s["gender"],
-    address: s["address"]
+    name:       s["name"],
+    grades:     s["grades"],
+    gender:     s["gender"],
+    address:    s["address"],
+    latitude:   s["latitude"],
+    longitutde: s["longitude"]
   )
 end
 puts "Created #{School.count} schools"
