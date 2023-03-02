@@ -28,7 +28,7 @@
         <ul>
         <% @school.students.each do |student| %>
         <li>
-        <%= link_to student.firstname, student %>
+        <%= link_to "#{student.firstname} #{student.lastname}", student %>
         </li>
         <%end%>
         </ul>
@@ -44,7 +44,7 @@
         <ul>
         <% @school.teachers.each do |teacher| %>
         <li>
-        <%= link_to teacher.firstname, teacher %>
+        <%= link_to "#{teacher.firstname} #{teacher.lastname}", teacher %>
         </li>
         <%end%>
         </ul>
