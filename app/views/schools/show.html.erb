@@ -8,7 +8,16 @@
         <p>Our address: <%= @school.address %></p>
 
       </article>
+      <div style="width: 70%">
+<%= js_map [{latitude: @school.latitude,
+             longitude: @school.longitutde,
+             label: "#{@school.name}, #{@school.address}"
+            }] %>
+
+</div>
   </div>
+
+
 
 
 <div class="tile is-ancestor" style="width: 70%; margin:auto">
@@ -26,7 +35,6 @@
       </div>
     </article>
 </div>
-
 
 
 <div class="tile is-parent m-2">
